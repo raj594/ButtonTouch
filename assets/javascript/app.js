@@ -1,11 +1,13 @@
 window.onload = function() {
   $("#fixed").click(logic.fixed);
-  $("#variable").click(logic.variable);
+  $("#mixed").click(logic.mixed);
 };
 
 var fixed = 0;
 var mixed = 0;
 var progress = 0;
+var fixedDone = false;
+var mixedDone = false;
 
 var logic = {
 
@@ -24,17 +26,20 @@ var logic = {
   	progress += 5;
   	$('.prize').show();
   	$('.progress-bar').attr('style', 'width:' + progress + '%');
-  	if (logic.count === 20) {
-  		alert('You are done!');
-  		logic.score = "";
-  		logic.count = 0;
-  		$('#score').text("");
-  		alert('There were ' + fixed + " fixed choices")
-  		alert('There were ' + mixed + " mixed choices")
-  	}
+	  	if (logic.count === 20) {
+	  		progress = 0;
+	  		logic.count = 0;
+	  		$('#score').text("");
+	  		alert('You are done!');
+	  		alert('There were ' + fixed + " fixed choices")
+	  		alert('There were ' + mixed + " mixed choices")
+	  		$('.progress-bar').attr('style', 'width:' + progress + '%');
+
+	  	}
+  	
   },
 
-  variable: function() {
+  mixed: function() {
   	var oneOrTen = Math.random() < 0.5 ? 1 : 10;
   	setTimeout(function(){
         logic.reset();
@@ -42,5 +47,5 @@ var logic = {
   	$('.prize').hide();
   	mixed++;
   },
-  
+
 };
