@@ -16,7 +16,7 @@ var logic = {
   fixed: function() {
   	setTimeout(function(){
         logic.reset();
-      }, 500);
+      }, 5000);
   	$('.prize').hide();
   	fixed++;
   },
@@ -43,7 +43,7 @@ var logic = {
   	var oneOrTen = Math.random() < 0.5 ? 1 : 10;
   	setTimeout(function(){
         logic.reset();
-      }, oneOrTen * 100);
+      }, oneOrTen * 1000);
   	$('.prize').hide();
   	mixed++;
   },
